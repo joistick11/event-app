@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dto.EventChangeRequest;
 import com.example.dto.EventDto;
@@ -53,8 +54,10 @@ public class EventService {
         return mapper.entitiesToModels(events);
     }
 
+    @Transactional // to remove in the same transaction and avoid additional select requests
     public void deleteEvent(Long id) {
-        repository.deleteById(id);
+        var event = getEventEntity(id);
+        repository.delete(event);
     }
 
     private EventEntity getEventEntity(Long id) {

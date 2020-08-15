@@ -2,11 +2,9 @@ package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import com.example.config.ApplicationConfig;
-
-@Import(ApplicationConfig.class)
+@EnableJpaAuditing
 @SpringBootApplication
 public class EventApplication {
 

@@ -1,3 +1,4 @@
+# minimal necessary configuration
 server:
   servlet:
     context-path: /events-app
